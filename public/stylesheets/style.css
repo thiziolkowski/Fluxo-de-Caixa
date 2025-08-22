@@ -1,0 +1,81 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+/* ----------------------------------------------------------------------------------------------------- */
+
+/* formatanto a classe */
+.dvCaixas {
+  width: 100%;
+  text-align: center;
+}
+
+
+/* formatando as divs */
+.dvCaixas div{
+  display: inline-block;
+  text-align: left;
+  background-color: #c3ccd0;
+  width: 22%;
+  margin: 10px;
+  padding: 20px; 
+}
+
+
+/* Selecionando a 2ª div da classe dv.Caixas */
+.dvCaixas :nth-child(2){
+  background-color: #75aa77;
+}
+
+/* Selecionando a 3ª div da classe dv.Caixas */
+.dvCaixas :nth-child(3){
+  background-color: #9d1e1e;
+  color: aliceblue;
+}
+
+
+/* ----------------------------------------------------------------------------------------------------- */
+/* formatando as div Busca */
+.dvBuscar {
+  margin-top: 40px;
+}
+
+.dvBuscar div, .dvBuscar form input, .dvBuscar form button{
+  display: inline-block;
+  margin-left: 20px;
+  text-align: left;  
+}
+
+.dvBuscar form input{
+  width: 95%;
+}
+
+.dvBuscar form button{
+  width: 5%;
+}
+
+
+/* Selecionando a 1ª div da classe dv.Buscar */
+.dvBuscar :nth-child(1){  
+  width: 85%; ;
+
+}
+
+/* Selecionando a 2ª div da classe dv.Buscar */
+.dvBuscar :nth-child(2){
+  width: 10%;   
+  text-align: center;
+}
+
+
+/* ----------------------------------------------------------------------------------------------------- */
+/* formatando as div Tabela */
+
+.dvTabela {
+  margin-top: 60px;
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Novo Lançamento</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+
+        <!-- CARD -->
+        <div class="card shadow-sm">
+          <div class="card-header bg-secondary text-white">
+            <h4 class="mb-0">Novo Lançamento</h4>
+          </div>
+          <div class="card-body">
+
+            <!-- FORMULÁRIO -->
+            <form action="/add" method="POST">
+
+              <!-- Linha 1 -->
+              <div class="row mb-3">
+                <div class="col-md-4">
+                  <label class="form-label">Data Emissão</label>
+                  <input type="date" name="dt_emissao" class="form-control" required>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">Cliente/Fornecedor</label>
+                  <input type="text" name="cliente_fornecedor" class="form-control" placeholder="Digite o nome" required>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">Descrição</label>
+                  <input type="text" name="descricao" class="form-control" placeholder="Descrição do lançamento" required>
+                </div>
+              </div>
+
+              <!-- Linha 2 -->
+              <div class="row mb-3">
+                <div class="col-md-3">
+                  <label class="form-label">Tipo</label>
+                  <select name="tipo" class="form-select" required>
+                    <option value="C">Receita (C)</option>
+                    <option value="D">Despesa (D)</option>
+                  </select>
+                </div>
+                <div class="col-md-3">
+                  <label class="form-label">Valor</label>
+                  <input type="number" step="0.01" name="valor" class="form-control" placeholder="0.00" required>
+                </div>
+                <div class="col-md-3">
+                  <label class="form-label">Data Vencimento</label>
+                  <input type="date" name="dt_venc" class="form-control" required>
+                </div>
+                <div class="col-md-3">
+                  <label class="form-label">Status</label>
+                  <select name="status" class="form-select" required>
+                      <option value="Em aberto">Em aberto</option>                    
+                  </select>
+                </div>
+              </div>
+
+              <!-- Botões -->
+              <div class="d-flex justify-content-between mt-4">
+                <a href="/" class="btn btn-outline-secondary">Cancelar</a>
+                <button type="submit" class="btn btn-success">Salvar Lançamento</button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

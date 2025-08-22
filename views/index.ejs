@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Fluxo de Caixa Node js</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  </head>
+
+  <body>
+    <h1>Fluxo de Caixa Node js</h1>
+    <hr>
+   
+<!-- ----------------------------------------------------------------------------- -->
+  
+    <div class="dvCaixas">
+      <div><strong>Saldo Atual        </strong> <br> R$ <%= saldoAtual.toFixed(2) %></div>
+      <div><strong>Receitas A Receber </strong> <br> R$ <%= totalReceitas.toFixed(2) %></div>
+      <div><strong>Despesas A Pagar   </strong> <br> R$ <%= totalDespesas.toFixed(2) %></div>
+      <div><strong>Saldo Final        </strong> <br> R$ <%= totalGeral.toFixed(2) %></div>
+    </div>
+
+<!-- ----------------------------------------------------------------------------- -->
+
+    <div class = "dvBuscar">
+
+      <div>
+        <form class="d-flex w-50" action="/" method="GET">
+          <input type="text" name="search" class="form-control me-2" placeholder="Digite aqui.." value="<%= search %>">
+          <button type="submit" class="btn btn-secondary me-2">Buscar</button>
+          <a href="/" class="btn btn-outline-secondary">Limpar</a>
+        </form>
+
+      </div>
+      
+      <div>
+        <a href="/add" class="btn btn-secondary">Adicionar</a>
+      </div>
+
+
+    </div>
+
+      
+<div class="dvTabela">
+
+  <table class="table table-striped table-bordered table-hover align-middle">
+    
+    <thead class="table-dark">
+      <tr>
+        <th>Dt_emissao</th>
+        <th>Cliente_fornecedor</th>
+        <th>Descricao</th>
+        <th>Tipo</th>
+        <th>Valor</th>
+        <th>Dt_venc</th>
+        <th>Status</th>
+        <th>Alterar Status / Excluir</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+     <% caixas.forEach(caixa => { %>
+   
+    <tr>
+      <td><%= caixa.dt_emissao %></td>
+      <td><%= caixa.cliente_fornecedor %></td>
+      <td><%= caixa.descricao %></td>         
+      <td>
+        <% if (caixa.tipo === 'C') { %>
+          <span class="badge bg-success">C</span>
+        <% } else { %>
+          <span class="badge bg-danger">D</span>
+        <% } %>
+      </td>
+      <td>R$ <%= parseFloat(caixa.valor).toFixed(2) %></td>
+      <td><%= caixa.dt_venc %></td>
+      <td>
+        <% if (caixa.status === 'Pago') { %>
+          <span class="badge bg-success">Pago</span>
+        <% } else { %>
+          <span class="badge bg-danger">Em aberto</span>
+        <% } %>
+      </td>
+
+     <td class="btn-group">
+        <!-- Botão Alterar Status com confirmação -->
+        <form action="/toggle-status/<%= caixa.id %>" method="POST" onsubmit="return confirm('Tem certeza que deseja alterar o status deste lançamento?');">
+          <button type="submit" class="btn btn-warning btn-sm">Alterar Status</button>
+        </form>
+
+        <!-- Botão Excluir com confirmação -->
+        <form action="/delete/<%= caixa.id %>" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este registro?');">
+          <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+        </form>
+      </td>
+
+
+
+    </tr>
+
+    <% }) %>
+
+  </tbody>
+
+</table>
+
+</div>
+
+    
+<!-- Código do Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+  
+  
+  </body>
+</html>
